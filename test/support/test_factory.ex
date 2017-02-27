@@ -38,4 +38,10 @@ defmodule ExMachina.TestFactory do
       admin: false
     }
   end
+
+  def note_factory do
+    %{
+      description: "A description"
+    }
+  end
 end

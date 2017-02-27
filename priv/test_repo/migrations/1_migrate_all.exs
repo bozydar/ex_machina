@@ -20,5 +20,14 @@ defmodule ExMachina.TestRepo.Migrations.MigrateAll do
       add :author, :map
       add :links, {:array, :map}, default: []
     end
+
+    execute "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\""
+
+    create table(:notes, primary_key: false) do
+      add :uuid, :uuid, primary_key: true, default: fragment("uuid_generate_v1()")
+      add :description, :text
+
+      timestamps()
+    end
   end
 end
